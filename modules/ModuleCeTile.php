@@ -1,19 +1,19 @@
 <?php
 
-class ModuleScreencastList extends Module
+class ModuleCeTile extends Module
 {
 	/**
 	 * Template
 	 * @var string
 	 */
-	protected $strTemplate = 'mod_screencast_list';
+	protected $strTemplate = 'mod_bhb_tile';
 
 	/**
 	 * Compile the current element
 	 */
 	protected function compile()
 	{
-		$this->loadLanguageFile('tl_screencast');
+		$this->loadLanguageFile('tl_bhb_tile');
 
 		$typeFilter = '';
 
@@ -34,7 +34,7 @@ class ModuleScreencastList extends Module
 
 		/** @var \Contao\Database\Result $rs */
 		$rs = Database::getInstance()
-			->prepare('SELECT * FROM tl_screencast ' . (count($whereSql) ? 'WHERE ' . implode('AND', $whereSql) : '') . ' ORDER BY title')
+			->prepare('SELECT * FROM tl_bhb_tile ' . (count($whereSql) ? 'WHERE ' . implode('AND', $whereSql) : '') . ' ORDER BY title')
 			->execute($queryArgs);
 
 		$this->Template->screencasts = $rs->fetchAllAssoc();
